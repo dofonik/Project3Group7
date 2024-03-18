@@ -27,31 +27,34 @@ app = dash.Dash(__name__)
 background_color = 'rgb(229, 236, 246)'  # You can adjust this color as needed
 
 # Define Dash HTML layout
-app.layout = html.Div(style={'backgroundColor': background_color}, children=[
+app.layout = html.Div(style={'backgroundColor': background_color, 'padding': '20px'}, children=[
     # Happiness Map
     html.Div([
+        html.H2("Happiness Map"),
         dcc.Graph(id='happiness-map')
-    ], className='twelve columns'),  # Make the map occupy twelve columns
+    ], className='twelve columns', style={'margin-bottom': '20px', 'padding': '20px', 'border': '1px solid #ccc'}),  # Make the map occupy twelve columns
+
+    # Divider
+    html.Hr(),
 
     # Dropdown layout (left side)
     html.Div([
-        html.Label(["Factors affecting Happiness Index"]),
+        html.H2("Factors Affecting Happiness Index"),
         dcc.Dropdown(id='my_dropdown',
                      options=[
                          {'label': 'GDP', 'value': 'GDP'},
-                         {'label': 'Infant mortality', 'value': 'Infant mortality'},
-                         {'label': 'Life expectancy', 'value': 'Life expectancy'},
-                         {'label': 'Infant mortality', 'value': 'Infant mortality'},
-                         {'label': 'Maternal mortality ratio', 'value': 'Maternal mortality ratio'},
-                         {'label': 'Minimum wage', 'value': 'Minimum wage'},
-                         {'label': 'Out of pocket health expenditure', 'value': 'Out of pocket health expenditure'},
-                         {'label': 'Physicians per thousand', 'value': 'Physicians per thousand'},
+                         {'label': 'Infant Mortality', 'value': 'Infant mortality'},
+                         {'label': 'Life Expectancy', 'value': 'Life expectancy'},
+                         {'label': 'Maternal Mortality Ratio', 'value': 'Maternal mortality ratio'},
+                         {'label': 'Minimum Wage', 'value': 'Minimum wage'},
+                         {'label': 'Out of Pocket Health Expenditure', 'value': 'Out of pocket health expenditure'},
+                         {'label': 'Physicians per Thousand', 'value': 'Physicians per thousand'},
                          {'label': 'Population', 'value': 'Population'},
-                         {'label': 'Unemployment rate', 'value': 'Unemployment rate'},
-                         {'label': 'Social support', 'value': 'Social support'},
-                         {'label': 'Freedom to make life choices', 'value': 'Freedom to make life choices'},
+                         {'label': 'Unemployment Rate', 'value': 'Unemployment rate'},
+                         {'label': 'Social Support', 'value': 'Social support'},
+                         {'label': 'Freedom to Make Life Choices', 'value': 'Freedom to make life choices'},
                          {'label': 'Generosity', 'value': 'Generosity'},
-                         {'label': 'Perceptions of corruption', 'value': 'Perceptions of corruption'}
+                         {'label': 'Perceptions of Corruption', 'value': 'Perceptions of corruption'}
                      ],
                      optionHeight=25,  # height between dropdown options
                      disabled=False,
@@ -64,22 +67,37 @@ app.layout = html.Div(style={'backgroundColor': background_color}, children=[
                      persistence=True,
                      persistence_type='memory'
                      )
-    ], className='three columns'),  # Make the dropdown occupy three columns
-    html.Label("Select Regions"),
-    dcc.Checklist(id='region_btns',
-                  options=[{'label': region, 'value': region} for region in cleandata_df['region'].unique()],
-                  value=[],
-                  inline=True),
+    ], className='three columns', style={'margin-bottom': '20px', 'padding': '20px', 'border': '1px solid #ccc'}),  # Make the dropdown occupy three columns
 
-    # Graph layout (right side)
+    # Divider
+    html.Hr(),
+
+    # Checkbox for regions
     html.Div([
+        html.H2("Select Regions"),
+        dcc.Checklist(id='region_btns',
+                      options=[{'label': region, 'value': region} for region in cleandata_df['region'].unique()],
+                      value=[],
+                      inline=True),
+    ], style={'margin-bottom': '20px', 'padding': '20px', 'border': '1px solid #ccc'}),
+
+    # Divider
+    html.Hr(),
+
+    # Scatter plot
+    html.Div([
+        html.H2("Scatter Plot"),
         dcc.Graph(id='the_graph')
-    ], className='nine columns'),  # Make the graph occupy nine columns
-    
+    ], style={'margin-bottom': '20px', 'padding': '20px', 'border': '1px solid #ccc'}),
+
+    # Divider
+    html.Hr(),
+
     # Radar Chart
     html.Div([
+        html.H2("Radar Chart"),
         html.Div([
-            html.Label('Select Country for Analysis', style={'font-weight': 'bold','font-size': '30px'}),
+            html.Label('Select Country for Analysis', style={'font-weight': 'bold', 'font-size': '20px'}),
             dcc.Dropdown(
                 id='country-dropdown',
                 options=[{'label': country, 'value': country} for country in radar_df['country_name'].unique()],
@@ -88,9 +106,9 @@ app.layout = html.Div(style={'backgroundColor': background_color}, children=[
                 style={'width': '100%'}  # Adjusted width
             ),
         ], style={'margin-bottom': '20px'}),  # Container for country dropdown
-        
+
         html.Div([
-            html.Label('Variables Selection', style={'font-weight': 'bold','font-size': '30px'}),
+            html.Label('Variables Selection', style={'font-weight': 'bold', 'font-size': '20px'}),
             html.Div([
                 dcc.Dropdown(
                     id=f'dropdown-{i}',
@@ -100,10 +118,11 @@ app.layout = html.Div(style={'backgroundColor': background_color}, children=[
                 ) for i in range(6)  # Assuming 6 factors for the radar chart
             ], style={'display': 'inline-block', 'vertical-align': 'top'}),  # Inline-block for alignment
         ], style={'text-align': 'left', 'display': 'flex', 'flex-direction': 'column', 'align-items': 'flex-start'}),  # Flex to align items to the start
-        
+
         dcc.Graph(id='radar-chart', style={'height': '800px'})  # Increased height for the graph
-    ], style={'width': '100%', 'max-width': '1200px', 'margin': '0 auto'})  # Adjust overall layout width and centering
+    ], style={'margin-bottom': '20px', 'padding': '20px', 'border': '1px solid #ccc'})  # Adjust overall layout width and centering
 ])
+
 
 # Define update map function
 # This function takes in data from country currently being hovered over by user mouse
