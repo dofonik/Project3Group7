@@ -1,0 +1,13 @@
+.select_box {
+    color: #6626fd !important;
+    border-bottom: 3px dotted gold;
+    width: 250px;
+    padding:10px;
+    font-size:16px;
+    line-height: 1px;
+    border:0;
+    border-radius:5px;
+    height:34px;
+    background: white;
+    background-position-x: 244px;
+}
