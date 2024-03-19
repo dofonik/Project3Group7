@@ -19,10 +19,12 @@ Dash allowed us to use its pre-built components to handle our HTML porting that 
 Before running the MergedDash.py script, ensure that you have all required packages installed with this command run in your command-line interface:
 
     pip install pandas plotly dash dash-bootstrap-components dash-bootstrap-templates
+    pip install dash-bootstrap-components
+    pip install dash-bootstrap-templates    
 
 Once these packages are installed, the mainscript which named "MergedDash.py" can be run with the command 'python MergedDash.py'
 
-This will launch the Dash application and your terminal will respond with "Dash is running on http://xx/". xx is the address and port number of the Dash application.
+This will launch the Dash application and your terminal will respond with "Dash is running on (http://127.0.0.1:8050/) is the address and port number of the Dash application.
 
 The visualisation can be run using Google Chrome, pasting the URL into the browser.
 
