@@ -150,7 +150,7 @@ def update_map(hoverData):
             projection_type='natural earth'  # Projection type
         ),
         margin=dict(l=0, r=0, t=30, b=0),
-        font=dict(color='white')  # Text color set to white
+        font=dict(color='black')
     )
 
     return fig

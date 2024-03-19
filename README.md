@@ -2,11 +2,29 @@
 
 ## Overview
 
-We aim to analyze the happiness index of each country and its correlation with various socio-economic indicators. Happiness is a crucial measure of societal well-being, and understanding its relationship with factors such as birth rate, GDP, gross tertiary education enrollment, life expectancy, physicians per thousand people, unemployment rate, urban population, and tax revenue can provide valuable insights into the overall quality of life and societal progress. By examining these interconnections, we can uncover valuable insights into how socio-economic factors influence happiness levels across different countries.
+We aim to analyze the happiness index of each country and its correlation with various socio-economic indicators. Happiness is a crucial measure of societal well-being, and understanding its relationship with factors such as GDP, life expectancy, health expenses etc, can provide valuable insights into the best path towards societal happiness.
+
+To navigate through this vast data landscape, we've leaned on three types of visual tools: geomaps, spider charts, and scatter plots. Geomaps help us visualize happiness across the globe, spotlighting trends and outliers. Spider charts allow us to compare how various factors contribute to happiness within individual countries, while scatter plots give us insight into the relationships between these factors, helping us pinpoint what impacts happiness most significantly.
 
 The datasets for our analysis are the World Happiness Report 2021 which reviews the state of happiness in the world, and the Global Country Information Dataset 2023 which tracks various metrics of different countries.
 
+In preparing the data for our global happiness project, we started with Python to import and clean our dataset, ensuring we worked with a dataset which had complete information.
+After cleaning, we mapped our tables using Quick DBD, then structured our database in PostgreSQL. This allowed us to join our three datasets into one.
+
+We approached this project using Dash which is a Python framework that allows us to create visualisations just using Python.
+Dash allowed us to use its pre-built components to handle our HTML porting that drives the visualisations. Dash also follows a reactive programming paradigm, which means we did not have to code in any checks to see if the user had selected different data or had interacted with the visualisation, as Dash will automatically update the visualisations based on changes the user has made.
+
 ## Instructions
+
+Before running the MergedDash.py script, ensure that you have all required packages installed with this command run in your command-line interface:
+
+    pip install pandas plotly dash dash-bootstrap-components dash-bootstrap-templates
+
+Once these packages are installed, the mainscript which named "MergedDash.py" can be run with the command 'python MergedDash.py'
+
+This will launch the Dash application and your terminal will respond with "Dash is running on http://xx/". xx is the address and port number of the Dash application.
+
+The visualisation can be run using Google Chrome, pasting the URL into the browser.
 
 ## Ethical Considerations
 
@@ -23,3 +41,5 @@ Bias/Representativeness - It is important to determine if our dataset is derived
 https://www.kaggle.com/datasets/ajaypalsinghlo/world-happiness-report-2021
 
 https://www.kaggle.com/datasets/nelgiriyewithana/countries-of-the-world-2023
+
+https://www.kaggle.com/datasets/andradaolteanu/country-mapping-iso-continent-region
