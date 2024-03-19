@@ -107,14 +107,14 @@ app.layout = dbc.Container(fluid=True, children=[
                     id=f'dropdown-{i}',
                     options=[{'label': col, 'value': col} for col in radar_df.columns if col != 'country_name'],
                     value=[col for col in radar_df.columns if col != 'country_name'][i % 6],  # Cycle through options if less than 6
-                    style={'width': '200%', 'margin-bottom': '5px'}  # Adjusted width and spacing
+                    style={'width': '100%', 'margin-bottom': '5px'}  # Adjusted width and spacing
                     ) for i in range(6)  # Assuming 6 factors for the radar chart
-            ], style={'display': 'inline-block', 'flex-direction':'column','vertical-align': 'top', 'margin-top': '30px'}),  # Inline-block for alignment
+            ], style={'display': 'flex', 'flex-direction':'column','align-items': 'flex-start', 'margin-top': '10px'}),  # Inline-block for alignment
         ], width=4),  # Adjusted width
 
         # Col for Radar Chart (right side)
         dbc.Col([
-            dcc.Graph(id='radar-chart', style={'height': '500px'})  # Adjusted height for the graph
+            dcc.Graph(id='radar-chart', style={'height': '700px'})  # Adjusted height for the graph
         ], width=8, style={'backgroundColor': 'transparent', 'padding': '20px', 'border': '2px solid black'})  # Adjusted width and added styling
     ])
 ])
