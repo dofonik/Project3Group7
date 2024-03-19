@@ -3,7 +3,7 @@ import plotly.express as px
 import plotly.io as pio
 
 df = pd.read_csv("output/joined_data.csv")
-df = df[df['scale'] == 'World Happiness']
+df = df[df['Happiness Score'] == 'World Happiness']
 df = df.groupby(['GDP', 'Infant mortality', 'Life expectancy', 'Infant mortality', 'Maternal mortality ratio', 'Minimum wage',  'Out of pocket health expenditure', 'Physicians per thousand', 'Population', 'value', 'Unemployment rate', 'Social support', 'Freedom to make life choices', 'Generosity', 'Perceptions of corruption'], as_index=False)[['detenues', 'under_trial', 'convicts', 'others', 'Happiness Score']].sum()
 
 barchart = px.bar(
